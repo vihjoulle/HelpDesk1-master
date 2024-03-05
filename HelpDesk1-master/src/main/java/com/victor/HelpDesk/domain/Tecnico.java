@@ -1,5 +1,6 @@
 package com.victor.HelpDesk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.victor.HelpDesk.domain.enums.Perfil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -10,7 +11,8 @@ import java.util.List;
 @Entity
 public class Tecnico extends Pessoa{
     private static final long serialVersionID = 1L;
-    private String tecnico;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
     private List<Chamado> chamados = new ArrayList<>();
 

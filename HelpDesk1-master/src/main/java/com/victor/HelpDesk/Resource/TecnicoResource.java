@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/tecnicoa")
+@RequestMapping(value = "/tecnicos")
 public class TecnicoResource {
 
     //localhost:8080/tecnicos/1
