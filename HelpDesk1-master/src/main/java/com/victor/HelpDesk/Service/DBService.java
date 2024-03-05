@@ -9,6 +9,7 @@ import com.victor.HelpDesk.domain.enums.Perfil;
 import com.victor.HelpDesk.domain.enums.Prioridade;
 import com.victor.HelpDesk.domain.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
