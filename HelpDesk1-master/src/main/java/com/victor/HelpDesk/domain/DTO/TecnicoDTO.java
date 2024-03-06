@@ -1,5 +1,6 @@
 package com.victor.HelpDesk.domain.DTO;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -11,7 +12,9 @@ import com.victor.HelpDesk.domain.Tecnico;
 import com.victor.HelpDesk.domain.enums.Perfil;
 
 
+/** @noinspection Convert2Diamond, UnnecessarySemicolon */
 public class TecnicoDTO implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
