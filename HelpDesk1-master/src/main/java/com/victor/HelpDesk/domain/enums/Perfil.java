@@ -17,7 +17,7 @@ public enum Perfil {
         return x;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
