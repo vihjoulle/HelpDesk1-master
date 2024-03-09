@@ -1,13 +1,17 @@
 package com.victor.HelpDesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.victor.HelpDesk.domain.DTO.TecnicoDTO;
 import com.victor.HelpDesk.domain.enums.Perfil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+/** @noinspection ALL*/
 @Entity
 public class Tecnico extends Pessoa{
     private static final long serialVersionID = 1L;

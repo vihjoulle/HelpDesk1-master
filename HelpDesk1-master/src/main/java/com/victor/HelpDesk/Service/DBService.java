@@ -24,7 +24,7 @@ public class DBService {
     @Autowired
     private ChamadoRepository chamadoRepository;
 
-    public void instanciaDB(){
+    public DBService instanciaDB(){
         Tecnico tec1 = new Tecnico(null, "Victor Oliveira","77687096754","victor_oliveira@email.com" ,"123");
         tec1.addPerfil(Perfil.ADMIN);
 
@@ -47,8 +47,9 @@ public class DBService {
         Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 5", "Teste chamado 5", tec2, cli1);
         Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ENCERRADO, "Chamado 7", "Teste chamado 6", tec1, cli5);
 
-        tecnicoRepository.saveAll(Arrays.asList(tec1));
+        tecnicoRepository.saveAll(Arrays.asList(tec1, tec1, tec2, tec3, tec4, tec5));
         clienteRepository.saveAll(Arrays.asList(cli1));
         chamadoRepository.saveAll(Arrays.asList(c1));
+        return null;
     }
 }

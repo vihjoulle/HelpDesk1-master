@@ -41,7 +41,6 @@ public class TecnicoDTO implements Serializable {
         this.perfis =obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
         addPerfil(Perfil.CLIENTE);
-        addPerfil(Perfil.CLIENTE);
     }
 
     public Integer getId() {
@@ -85,7 +84,7 @@ public class TecnicoDTO implements Serializable {
     }
 
     public Set<Perfil> getPerfis() {
-        return perfis.stream().map(x -> {
+       return perfis.stream().map(x -> {
             try {
                 return Perfil.toEnum(x);
             } catch (IllegalAccessException e) {
