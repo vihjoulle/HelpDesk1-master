@@ -31,4 +31,9 @@ public class TecnicoResource {
         List<TecnicoDTO> listDTO = list.stream().map(obj -> new TecnicoDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
+
+    public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO objDTO) {
+    Tecnico newObj = service.create(objDTO);
+    return null;
+    }
 }

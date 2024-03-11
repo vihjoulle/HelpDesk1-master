@@ -11,6 +11,7 @@ import com.victor.HelpDesk.domain.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
+import java.util.Set;
 
 
 @Service
@@ -24,7 +25,7 @@ public class DBService {
     @Autowired
     private ChamadoRepository chamadoRepository;
 
-    public DBService instanciaDB(){
+    public void instanciaDB(){
         Tecnico tec1 = new Tecnico(null, "Victor Oliveira","77687096754","victor_oliveira@email.com" ,"123");
         tec1.addPerfil(Perfil.ADMIN);
 
@@ -50,6 +51,5 @@ public class DBService {
         tecnicoRepository.saveAll(Arrays.asList(tec1, tec1, tec2, tec3, tec4, tec5));
         clienteRepository.saveAll(Arrays.asList(cli1));
         chamadoRepository.saveAll(Arrays.asList(c1));
-        return null;
     }
 }

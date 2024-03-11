@@ -1,11 +1,12 @@
 package com.victor.HelpDesk.Config;
 
-import com.victor.HelpDesk.Service.DBService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.victor.HelpDesk.Service.DBService;
 
 @Configuration
 @Profile("test")
@@ -14,8 +15,8 @@ public class TestConfig {
     @Autowired
     private DBService dbService;
 
-    @Bean
-    public DBService instanciaDB(){
-        return dbService.instanciaDB();
+    @PostConstruct
+    public void instanciaDB() {
+        dbService.instanciaDB();
     }
 }

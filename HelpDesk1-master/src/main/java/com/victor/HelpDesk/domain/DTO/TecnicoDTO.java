@@ -12,7 +12,7 @@ import com.victor.HelpDesk.domain.Tecnico;
 import com.victor.HelpDesk.domain.enums.Perfil;
 
 
-/** @noinspection Convert2Diamond, UnnecessarySemicolon */
+/** @noinspection Convert2Diamond, UnnecessarySemicolon , LambdaCanBeReplacedWithAnonymous */
 public class TecnicoDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -20,14 +20,14 @@ public class TecnicoDTO implements Serializable {
     protected Integer id;
     protected String nome;
     protected String cpf;
-    protected String Email;
+    protected String email;
     protected String senha;
-    protected Set<Integer> perfis = new HashSet<Integer>();
+    protected Set<Integer> perfis = new HashSet<>();
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
     public TecnicoDTO() {
-        super();;
+        super();
     }
 
     /** @noinspection StreamToLoop, Convert2MethodRef , LambdaParameterTypeCanBeSpecified */
@@ -36,9 +36,9 @@ public class TecnicoDTO implements Serializable {
         this.id = obj.getId();
         this.nome =obj.getNome();
         this.cpf = obj.getCpf();
-        this.Email = obj.getEmail();
+        this.email = obj.getEmail();
         this.senha = obj.getSenha();
-        this.perfis =obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+        this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
         addPerfil(Perfil.CLIENTE);
     }
@@ -68,11 +68,11 @@ public class TecnicoDTO implements Serializable {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public String getSenha() {
@@ -84,13 +84,7 @@ public class TecnicoDTO implements Serializable {
     }
 
     public Set<Perfil> getPerfis() {
-       return perfis.stream().map(x -> {
-            try {
-                return Perfil.toEnum(x);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        }).collect(Collectors.toSet());
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
 
     public void addPerfil(Perfil perfil) {
@@ -106,3 +100,4 @@ public class TecnicoDTO implements Serializable {
     }
 
 }
+

@@ -2,6 +2,7 @@ package com.victor.HelpDesk.Service;
 
 import com.victor.HelpDesk.Repositories.TecnicoRepository;
 import com.victor.HelpDesk.Service.Exceptions.ObjectnotFoundException;
+import com.victor.HelpDesk.domain.DTO.TecnicoDTO;
 import com.victor.HelpDesk.domain.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class TecnicoService {
     public List<Tecnico> findAll() {
 
         return repository.findAll();
+    }
+
+    public Tecnico create(TecnicoDTO objDTO) {
+
+        return null;
     }
 }
