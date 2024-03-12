@@ -27,7 +27,8 @@ public class TecnicoService {
     }
 
     public Tecnico create(TecnicoDTO objDTO) {
-
-        return null;
+        objDTO.setId(null);
+     Tecnico newObj = new Tecnico(objDTO);
+     return repository.save(newObj);
     }
 }

@@ -28,6 +28,7 @@ public class TecnicoDTO implements Serializable {
 
     public TecnicoDTO() {
         super();
+        addPerfil(Perfil.CLIENTE);
     }
 
     /** @noinspection StreamToLoop, Convert2MethodRef , LambdaParameterTypeCanBeSpecified */
