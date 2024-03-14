@@ -49,7 +49,7 @@ public class DBService {
         Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ENCERRADO, "Chamado 7", "Teste chamado 6", tec1, cli5);
 
         tecnicoRepository.saveAll(Arrays.asList(tec1, tec1, tec2, tec3, tec4, tec5));
-        clienteRepository.saveAll(Arrays.asList(cli1));
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5));
         chamadoRepository.saveAll(Arrays.asList(c1));
     }
 }
