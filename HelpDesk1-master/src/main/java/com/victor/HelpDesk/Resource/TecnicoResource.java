@@ -20,15 +20,13 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/tecnicos")
 public class TecnicoResource {
 
-    //localhost:8080/tecnicos/1
-
     @Autowired
     private TecnicoService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TecnicoDTO> findbyId(@PathVariable Integer id) {
-    Tecnico obj = service.findById(id);
-    return ResponseEntity.ok().body(new TecnicoDTO(obj));
+    public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
+        Tecnico obj = service.findById(id);
+        return ResponseEntity.ok().body(new TecnicoDTO(obj));
     }
 
     @GetMapping
@@ -40,15 +38,16 @@ public class TecnicoResource {
 
     @PostMapping
     public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO) {
-    Tecnico newObj = service.create(objDTO);
-    URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-    return ResponseEntity.created(uri).build();
+        Tecnico newObj = service.create(objDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
+
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO){
-        Tecnico Obj = service.update(id, objDTO);
-        return ResponseEntity.ok().body(new TecnicoDTO(Obj));
+    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO) {
+        Tecnico obj = service.update(id, objDTO);
+        return ResponseEntity.ok().body(new TecnicoDTO(obj));
     }
 
     @DeleteMapping(value = "/{id}")
@@ -56,4 +55,5 @@ public class TecnicoResource {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }

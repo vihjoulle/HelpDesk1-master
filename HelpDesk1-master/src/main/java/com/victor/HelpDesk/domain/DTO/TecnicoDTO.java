@@ -8,26 +8,29 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.victor.HelpDesk.domain.Cliente;
 import com.victor.HelpDesk.domain.Tecnico;
 import com.victor.HelpDesk.domain.enums.Perfil;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.br.CPF;
 
 
 /** @noinspection Convert2Diamond, UnnecessarySemicolon , LambdaCanBeReplacedWithAnonymous */
 public class TecnicoDTO implements Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
     @NotNull(message = "O campo NOME é requerido")
     protected String nome;
     @NotNull(message = "O campo CPF é requerido")
+    @CPF
     protected String cpf;
     @NotNull(message = "O campo EMAIL é requerido")
     protected String email;
     @NotNull(message = "O campo SENHA é requerido")
     protected String senha;
     protected Set<Integer> perfis = new HashSet<>();
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
@@ -36,11 +39,10 @@ public class TecnicoDTO implements Serializable {
         addPerfil(Perfil.CLIENTE);
     }
 
-    /** @noinspection StreamToLoop, Convert2MethodRef , LambdaParameterTypeCanBeSpecified */
     public TecnicoDTO(Tecnico obj) {
         super();
         this.id = obj.getId();
-        this.nome =obj.getNome();
+        this.nome = obj.getNome();
         this.cpf = obj.getCpf();
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
@@ -106,4 +108,3 @@ public class TecnicoDTO implements Serializable {
     }
 
 }
-
