@@ -10,7 +10,7 @@ import com.victor.HelpDesk.domain.DTO.ChamadoDTO;
 import com.victor.HelpDesk.domain.Tecnico;
 import com.victor.HelpDesk.domain.enums.Prioridade;
 import com.victor.HelpDesk.domain.enums.Status;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

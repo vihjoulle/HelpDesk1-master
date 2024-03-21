@@ -1,7 +1,7 @@
 package com.victor.HelpDesk.Resource.exception;
 
 import com.victor.HelpDesk.Service.Exceptions.ObjectnotFoundException;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

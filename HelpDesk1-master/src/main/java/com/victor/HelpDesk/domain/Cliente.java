@@ -3,8 +3,8 @@ package com.victor.HelpDesk.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.victor.HelpDesk.domain.DTO.ClienteDTO;
 import com.victor.HelpDesk.domain.enums.Perfil;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;

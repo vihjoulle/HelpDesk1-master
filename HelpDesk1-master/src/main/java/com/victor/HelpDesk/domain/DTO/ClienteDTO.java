@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.victor.HelpDesk.domain.Cliente;
 import com.victor.HelpDesk.domain.Tecnico;
 import com.victor.HelpDesk.domain.enums.Perfil;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.io.Serial;
+//import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;

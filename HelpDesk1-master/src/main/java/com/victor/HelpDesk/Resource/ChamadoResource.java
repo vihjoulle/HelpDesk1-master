@@ -4,7 +4,7 @@ package com.victor.HelpDesk.Resource;
 import com.victor.HelpDesk.Service.ChamadoService;
 import com.victor.HelpDesk.domain.Chamado;
 import com.victor.HelpDesk.domain.DTO.ChamadoDTO;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

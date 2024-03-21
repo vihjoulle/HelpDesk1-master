@@ -1,14 +1,14 @@
 package com.victor.HelpDesk.domain;
 
-import java.io.Serial;
+//import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.victor.HelpDesk.domain.DTO.TecnicoDTO;

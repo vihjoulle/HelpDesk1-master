@@ -3,7 +3,7 @@ package com.victor.HelpDesk.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.victor.HelpDesk.domain.enums.Prioridade;
 import com.victor.HelpDesk.domain.enums.Status;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;

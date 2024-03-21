@@ -2,10 +2,10 @@ package com.victor.HelpDesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.victor.HelpDesk.domain.enums.Perfil;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.io.Serial;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
