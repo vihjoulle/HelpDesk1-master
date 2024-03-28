@@ -18,7 +18,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.victor.HelpDesk.Security.JWTAuthenticationFilter;
-import com.valdir.helpdesk.security.JWTAuthorizationFilter;
+import com.victor.HelpDesk.Security.JWTAuthorizationFilter;
 import com.victor.HelpDesk.Security.JWTUtil;
 
 @EnableWebSecurity

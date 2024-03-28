@@ -1,20 +1,23 @@
 package com.victor.HelpDesk.Security;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.victor.HelpDesk.domain.DTO.CredenciaisDTO;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.victor.HelpDesk.domain.DTO.CredenciaisDTO;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -42,14 +45,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest req,
-                                            HttpServletResponse res,
+    protected void successfulAuthentication(HttpServletRequest request,
+                                            HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
 
         String username = ((UserSS) auth.getPrincipal()).getUsername();
         String token = jwtUtil.generateToken(username);
-
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, enctype, Location");
+        response.setHeader("Authorization", "Bearer " + token);
     }
 
     @Override
