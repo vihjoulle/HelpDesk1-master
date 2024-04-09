@@ -91,7 +91,7 @@
 			<repository>
 				<id>deploymentRepo</id>
 				<name>Internal Deployment Repository</name>
-				<url>http://helpdesk1-master-production.up.railway.apphelpdesk1-master-production.up.railway.app</url>
+				<url>http://helpdesk1-master-production.up.railway.app</url>
 			</repository>
 		</distributionManagement>
 </project>
