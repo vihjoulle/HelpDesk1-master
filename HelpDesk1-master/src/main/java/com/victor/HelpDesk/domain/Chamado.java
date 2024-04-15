@@ -10,16 +10,26 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /** @noinspection ALL*/
-@Entity
-public class Chamado implements Serializable {
-    private static final long serialVersionUID =  1L;
+@Entity //Esta anotação marca a classe Chamado como uma entidade JPA, o que significa que ela será mapeada para uma tabela no banco de dados.
+public class Chamado implements Serializable //Esta linha inicia a declaração da classe Chamado, que implementa a interface Serializable, indicando
+// que os objetos dessa classe podem ser serializados.
+{
+    private static final long serialVersionUID =  1L; //Esta linha declara um campo estático que é usado durante a serialização e desserialização de objetos da
+    // classe.
+
+    //Estas linhas declaram o identificador da entidade (id) e especificam que ele é gerado automaticamente pelo banco de dados com a estratégia IDENTITY,
+    // o que geralmente significa que é uma chave primária autoincrementada.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    //Estas linhas declaram campos para a data de abertura e fechamento do chamado, utilizando a anotação @JsonFormat para formatar a data durante a serialização.
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+
+    //Estas linhas declaram campos para a prioridade, status, título e observações do chamado.
     private Prioridade prioridade;
     private Status status;
     private String titulo;
@@ -27,12 +37,19 @@ public class Chamado implements Serializable {
     @ManyToOne
     @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+
+    //Estas linhas declaram associações muitos-para-um com as entidades Tecnico e Cliente, indicando que um chamado pertence a um técnico e a um cliente.
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    //Este é o construtor padrão da classe Chamado.
+
     public Chamado(){
         super();
     }
+
+    //Este é um construtor sobrecarregado que inicializa os campos da classe com os valores fornecidos.
 
     public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico, Cliente cliente) {
         this.id = id;
@@ -43,6 +60,10 @@ public class Chamado implements Serializable {
         this.tecnico = tecnico;
         this.cliente = cliente;
     }
+
+    //Estes são os métodos equals() e hashCode() que são sobrepostos para garantir a consistência dos objetos Chamado quando são usados em estruturas
+    // de dados que dependem desses métodos, como conjuntos (Set). O método equals() compara os objetos com base em seus identificadores, enquanto o
+    // método hashCode() gera um código de hash com base no identificador.
 
     public Integer getId() {
         return id;

@@ -21,19 +21,35 @@ import com.victor.HelpDesk.Security.JWTAuthenticationFilter;
 import com.victor.HelpDesk.Security.JWTAuthorizationFilter;
 import com.victor.HelpDesk.Security.JWTUtil;
 
+
+//@EnableWebSecurity: Indica que esta classe será usada para configurar a segurança web.
 @EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true): Habilita a segurança global a nível de método com pré-autorização.
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+//public class SecurityConfig extends WebSecurityConfigurerAdapter
+// {: Define a classe SecurityConfig que estende WebSecurityConfigurerAdapter.
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    //private static final String[] PUBLIC_MATCHERS = { "/h2-console/**", "/login" };:
+    // Define uma matriz de URLs públicas que não requerem autenticação.
     private static final String[] PUBLIC_MATCHERS = { "/h2-console/**", "/login" };
 
+    //@Autowired private Environment env;: Injeta o ambiente do Spring.
     @Autowired
     private Environment env;
+
+    //@Autowired private JWTUtil jwtUtil;: Injeta o utilitário JWT.
     @Autowired
     private JWTUtil jwtUtil;
+
+   // @Autowired private UserDetailsService userDetailsService;: Injeta o serviço UserDetailsService.
     @Autowired
     private UserDetailsService userDetailsService;
 
+
+    //@Override protected void configure(HttpSecurity http) throws Exception { ... }: Sobrescreve o método
+    // configure de WebSecurityConfigurerAdapter para configurar as regras de segurança HTTP.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
@@ -48,11 +64,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
+    //@Override protected void configure(AuthenticationManagerBuilder auth) throws Exception { ... }: Sobrescreve o
+    // método configure de WebSecurityConfigurerAdapter para configurar o gerenciador de autenticação.
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
-
+    //@Bean CorsConfigurationSource corsConfigurationSource() { ... }: Define um bean para configurar a origem da configuração CORS.
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
@@ -61,6 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+    //@Bean public BCryptPasswordEncoder bCryptPasswordEncoder() { ... }: Define um bean para o codificador de senhas BCrypt.
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

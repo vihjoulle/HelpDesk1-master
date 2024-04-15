@@ -16,8 +16,13 @@ import org.hibernate.validator.constraints.br.CPF;
 
 
 /** @noinspection Convert2Diamond, UnnecessarySemicolon , LambdaCanBeReplacedWithAnonymous */
-public class TecnicoDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class TecnicoDTO implements Serializable //Declaração da classe TecnicoDTO, que implementa a interface Serializable.
+{
+    private static final long serialVersionUID = 1L; //Define o número de versão da classe para fins de serialização.
+
+
+    //Declaração de variáveis de instância que representam os atributos de um técnico, como id, nome, cpf, email, senha e perfis.
+    // Algumas dessas variáveis possuem anotações de validação, como @NotNull e @CPF.
 
     protected Integer id;
     @NotNull(message = "O campo NOME é requerido")
@@ -31,13 +36,17 @@ public class TecnicoDTO implements Serializable {
     protected String senha;
     protected Set<Integer> perfis = new HashSet<>();
 
+    //Anotação que indica o formato de serialização para o campo dataCriacao.
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
+    //Construtor padrão que inicializa a lista de perfis com o perfil de técnico.
     public TecnicoDTO() {
         super();
         addPerfil(Perfil.CLIENTE);
     }
+
+    //Construtor que recebe um objeto Tecnico como parâmetro e inicializa os atributos do DTO com os valores do objeto Tecnico.
 
     public TecnicoDTO(Tecnico obj) {
         super();
@@ -50,6 +59,8 @@ public class TecnicoDTO implements Serializable {
         this.dataCriacao = obj.getDataCriacao();
         addPerfil(Perfil.CLIENTE);
     }
+
+    //Métodos getter e setter.
 
     public Integer getId() {
         return id;
@@ -91,6 +102,8 @@ public class TecnicoDTO implements Serializable {
         this.senha = senha;
     }
 
+    //Métodos para obter a lista de perfis do técnico DTO e adicionar um perfil à lista de perfis.
+
     public Set<Perfil> getPerfis() {
         return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
@@ -98,6 +111,9 @@ public class TecnicoDTO implements Serializable {
     public void addPerfil(Perfil perfil) {
         this.perfis.add(perfil.getCodigo());
     }
+
+
+    //Métodos getter e setter para o atributo dataCriacao.
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
